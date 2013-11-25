@@ -17,8 +17,8 @@ class PagesController < ApplicationController
   
   def test
     @doc_data = params[:doc_data]
-    @autograf = params[:autograf]
-    puts "doc_data: #{@doc_data} -- autograf: #{@autograf}"
-    render json: @doc_data, :layout => false
+    parsed_json = ActiveSupport::JSON.decode(@doc_data)
+    # puts "doc_data: #{@doc_data} -- autograf: #{@autograf} -- parsed: #{parsed_json[:table]}"
+    render @doc_data, :layout => false
   end
 end
